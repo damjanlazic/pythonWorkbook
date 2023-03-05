@@ -18,17 +18,20 @@ def mešaj(karte) :
         cards[i], cards[indexzamene] =cards[indexzamene], cards[i]
     return cards
 
-def deli(karte,brigrača,brkarti):
-    igrač=[]
-  
-    
-    for i in range(0,brigrača):
-        igrač.append(karte.pop(0)+" ")
+def deli(karte,brigrača):
+    igrač = [["","","","","",""] for x in range(0,brigrača)]
 
-    for k in range(0,brkarti-1):
+# pravljeno za tablic tako da se dele po 3 karte za redom svakom igracu, br igraca moze biti 2 ili 4
+    prva = 0
+    poslednja = 3
+
+    for deljenje in range(2):
         for i in range(0,brigrača):
-            igrač[i]=igrač[i]+karte.pop(0)+" "
-            
+            for k in range(prva,poslednja):
+                igrač[i][k] = karte.pop(0)
+                #
+        prva = 3
+        poslednja = 6           
     return igrač
 
 def testfor():
@@ -58,7 +61,7 @@ def main() :
     izmešan=mešaj(deck)
     print(izmešan)
     print("broj karata je: ", len(izmešan))
-    ruka=deli(izmešan,4,5)
+    ruka=deli(izmešan,2)
     print(ruka)
     print("preostale karte\n", izmešan)
     print("broj preostalih karata je: ", len(izmešan))
