@@ -9,8 +9,9 @@ def brslova(s1):
             d1[ch]=d1[ch]+1
         else:
             d1[ch]=1
+
     for k in sorted(d1):
-        d2=d1[k]
+        d2[k]=d1[k]
 
     return d2
 
